@@ -13,13 +13,13 @@ export default function fashionunitedTheme(): StarlightPlugin {
             "@fontsource/ibm-plex-mono/600.css",
             "@fontsource-variable/inter",
             "@fontsource-variable/lora",
-            ...config.customCss,
+            ...(config.customCss ?? []),
           ],
           components: {
             Head: "@fashionunited/starlight-plugin-theme/components/starlight/Head.astro",
             PageTitle:
               "@fashionunited/starlight-plugin-theme/components/starlight/PageTitle.astro",
-            ...config.components,
+            ...(config.components ?? {}),
           },
         });
       },
