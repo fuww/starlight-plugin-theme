@@ -4,6 +4,13 @@
   "description": "Shared FashionUnited Starlight theme plugin — blue-themed design system with UI components",
   "type": "module",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fuww/starlight-plugin-theme.git"
+  },
   "exports": {
     ".": "./index.ts",
     "./tailwind-preset": "./tailwind-preset.mjs",
