@@ -1,0 +1,41 @@
+{
+  "name": "@fashionunited/starlight-plugin-theme",
+  "version": "0.1.0",
+  "description": "Shared FashionUnited Starlight theme plugin — blue-themed design system with UI components",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": "./index.ts",
+    "./tailwind-preset": "./tailwind-preset.mjs",
+    "./styles/base.css": "./styles/base.css",
+    "./styles/globals.css": "./styles/globals.css",
+    "./components/starlight/Head.astro": "./components/starlight/Head.astro",
+    "./components/starlight/PageTitle.astro": "./components/starlight/PageTitle.astro",
+    "./components/ui/button": "./components/ui/button.tsx",
+    "./components/ui/card": "./components/ui/card.tsx",
+    "./components/constants": "./components/constants.ts",
+    "./lib/utils": "./lib/utils.ts"
+  },
+  "files": [
+    "index.ts",
+    "tailwind-preset.mjs",
+    "styles/",
+    "components/",
+    "lib/"
+  ],
+  "peerDependencies": {
+    "@astrojs/starlight": ">=0.30.0",
+    "astro": ">=5.0.0",
+    "tailwindcss": ">=3.0.0"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "^5.2.8",
+    "@fontsource-variable/lora": "^5.2.8",
+    "@fontsource/ibm-plex-mono": "^5.2.7",
+    "@radix-ui/react-slot": "^1.2.4",
+    "astro-vtbot": "^2.1.10",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.6.0"
+  }
+}
