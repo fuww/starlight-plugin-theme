@@ -50,14 +50,19 @@ const title = Astro.locals.starlightRoute.entry.data.title;
 </div>
 
 <script>
+	let cleanupCopyPageDropdown: (() => void) | undefined;
+
 	function setupCopyPageDropdown() {
+		// Clean up previous listeners to prevent leaks on view transitions
+		cleanupCopyPageDropdown?.();
+
 		const button = document.querySelector('.copy-page-button');
 		const dropdown = document.querySelector('.dropdown-menu');
 
 		if (!button || !dropdown) return;
 
 		// Remove any existing listeners by cloning (prevents duplicates on view transitions)
-		const newButton = button.cloneNode(true);
+		const newButton = button.cloneNode(true) as HTMLElement;
 		button.parentNode?.replaceChild(newButton, button);
 
 		newButton.addEventListener('click', (e) => {
@@ -78,9 +83,22 @@ const title = Astro.locals.starlightRoute.entry.data.title;
 				currentButton?.setAttribute('aria-expanded', 'false');
 			}
 		};
-		document.addEventListener('click', closeDropdown, { once: false });
+		document.addEventListener('click', closeDropdown);
 
-		const newCopyBtn = document.querySelector('[data-action="copy-markdown"]');
+		// Clone dropdown items to remove previous listeners
+		const copyBtn = document.querySelector('[data-action="copy-markdown"]');
+		const viewBtn = document.querySelector('[data-action="view-markdown"]');
+
+		const newCopyBtn = copyBtn?.cloneNode(true) as HTMLElement | null;
+		if (copyBtn && newCopyBtn) {
+			copyBtn.parentNode?.replaceChild(newCopyBtn, copyBtn);
+		}
+
+		const newViewBtn = viewBtn?.cloneNode(true) as HTMLElement | null;
+		if (viewBtn && newViewBtn) {
+			viewBtn.parentNode?.replaceChild(newViewBtn, viewBtn);
+		}
+
 		newCopyBtn?.addEventListener('click', async () => {
 			try {
 				const response = await fetch(window.location.pathname.replace(/\/$/, '') + '.md');
@@ -105,12 +123,16 @@ const title = Astro.locals.starlightRoute.entry.data.title;
 			closeDropdown();
 		});
 
-		const newViewBtn = document.querySelector('[data-action="view-markdown"]');
 		newViewBtn?.addEventListener('click', () => {
 			const markdownUrl = window.location.pathname.replace(/\/$/, '') + '.md';
 			window.open(markdownUrl, '_blank');
 			closeDropdown();
 		});
+
+		// Store cleanup function to remove document listener on next setup
+		cleanupCopyPageDropdown = () => {
+			document.removeEventListener('click', closeDropdown);
+		};
 	}
 
 	document.addEventListener('DOMContentLoaded', setupCopyPageDropdown);

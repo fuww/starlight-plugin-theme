@@ -1,5 +1,5 @@
 {
-  "name": "@fashionunited/starlight-plugin-theme",
+  "name": "@fuww/starlight-plugin-theme",
   "version": "0.1.0",
   "description": "Shared FashionUnited Starlight theme plugin — blue-themed design system with UI components",
   "type": "module",

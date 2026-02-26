@@ -24,7 +24,7 @@ jobs:
         with:
           node-version: "22"
           registry-url: "https://npm.pkg.github.com"
-          scope: "@fashionunited"
+          scope: "@fuww"
 
       - run: npm publish --access public
         env:

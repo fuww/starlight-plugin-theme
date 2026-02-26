@@ -1,11 +1,11 @@
-# @fashionunited/starlight-plugin-theme
+# @fuww/starlight-plugin-theme
 
 Shared FashionUnited Starlight theme plugin — blue-themed design system with UI components, Tailwind preset, and Starlight component overrides.
 
 ## Installation
 
 ```bash
-bun add @fashionunited/starlight-plugin-theme
+bun add @fuww/starlight-plugin-theme
 ```
 
 ## Usage
@@ -15,7 +15,7 @@ bun add @fashionunited/starlight-plugin-theme
 Add the plugin to your `astro.config.mjs`:
 
 ```js
-import fashionunitedTheme from '@fashionunited/starlight-plugin-theme';
+import fashionunitedTheme from '@fuww/starlight-plugin-theme';
 
 export default defineConfig({
   integrations: [
@@ -39,7 +39,7 @@ Use the shared Tailwind preset in your `tailwind.config.mjs`:
 
 ```js
 import starlightPlugin from '@astrojs/starlight-tailwind';
-import { fuThemePreset, accent, gray } from '@fashionunited/starlight-plugin-theme/tailwind-preset';
+import { fuThemePreset, accent, gray } from '@fuww/starlight-plugin-theme/tailwind-preset';
 
 export default {
   presets: [fuThemePreset],
@@ -57,9 +57,9 @@ export default {
 Import shared React components:
 
 ```tsx
-import { Button } from '@fashionunited/starlight-plugin-theme/components/ui/button';
-import { Card } from '@fashionunited/starlight-plugin-theme/components/ui/card';
-import { cn } from '@fashionunited/starlight-plugin-theme/lib/utils';
+import { Button } from '@fuww/starlight-plugin-theme/components/ui/button';
+import { Card } from '@fuww/starlight-plugin-theme/components/ui/card';
+import { cn } from '@fuww/starlight-plugin-theme/lib/utils';
 ```
 
 ## Overriding Components
