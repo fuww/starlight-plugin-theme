@@ -1,5 +1,7 @@
-const { fontFamily } = require("tailwindcss/defaultTheme");
-const colors = require("tailwindcss/colors");
+import defaultTheme from "tailwindcss/defaultTheme.js";
+import colors from "tailwindcss/colors.js";
+
+const { fontFamily } = defaultTheme;
 
 // Sophisticated blue palette inspired by Solid.js
 // https://starlight.astro.build/guides/css-and-tailwind/#color-theme-editor
